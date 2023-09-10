@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="container p-5">
+    <h1 class="form-heading pb-3">Please fill the form</h1>
+    <form method="POST">
+        {% for i in range(0, fields|length, 2) %}
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{{ fields[i][0] }}</span>
+                    </div>
+                    <input name="form_field_{{ i }}" type="{{ fields[i][1] }}" class="form-control">
+                </div>
+            </div>
+            {% if (i+1) != fields|length %}
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{{ fields[i+1][0] }}</span>
+                    </div>
+                    <input name="form_field_{{ i+1 }}" type="{{ fields[i+1][1] }}" class="form-control">
+                </div>
+            </div>
+            {% else %}
+            <div class="col">
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <div class="form-field col-lg-12 file-upload-box">
+            <input class="btn btn-lg btn-block btn-signup-email mt-5" type="submit" value="Submit" />
+        </div>
+    </form>
+</section>
+
+
+
+{% endblock %}

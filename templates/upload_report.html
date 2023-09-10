@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="get-in-touch p-2">
+    <h1 class="form-heading">Upload Health Report</h1>
+    <form class="row" method="POST" enctype="multipart/form-data">
+        <div class="container mt-3">
+            <div class="row file-upload-box">
+                <div class="form-field col-lg-12">
+                    <div class="form-group files">
+                        <input required type="file" name="application_form" id="application_form"
+                            class="js-input form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-field col-lg-12 file-upload-box">
+            <input class="btn btn-lg btn-block btn-signup-email mt-5" type="submit" value="Submit" />
+        </div>
+    </form>
+</section>
+
+
+
+{% endblock %}

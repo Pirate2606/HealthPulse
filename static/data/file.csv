@@ -1,0 +1,37 @@
+X,Y
+age,number
+name,text
+email,email
+date,date
+username,text
+password,password
+confirm password,password
+first name,text
+last name,text
+phone number,number
+address,text
+zipcode,number
+city,text
+state,text
+country,text
+date of birth,date
+marital status,text
+occupation,text
+patient name,text
+patient id,number
+date of birth,date
+gender,text
+diagnosis,text
+symptoms,text
+medications,text
+dosage,text
+blood pressure,number
+heart rate,number
+temperature,number
+oxygen level,number
+allergies,text
+family history,text
+previous surgeries,text
+current medications,text
+emergency contact,number
+primary physician,text
