@@ -8,7 +8,7 @@ mail = Mail(app)
 
 def send_mail(name, email, phone_num, message):
     msg = Message('Feedback')
-    address = 'maytrix.cafe@gmail.com'
+    address = 'health.pulse@gmail.com'
     msg.recipients.append(str(address))
     msg.body = "Name : " + name + "\nEmail : " + email + "\nPhone Num. : " + phone_num + "\nMessage : " + message
     mail.send(msg)
