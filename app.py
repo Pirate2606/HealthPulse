@@ -147,6 +147,8 @@ def upload_form():
                         page = my_file.pages[page_number]
                         text = page.extract_text()
                         final_response += text
+                if css_download(access_token, location, files):
+                    print("Download done")
                 os.remove(location)
                 final_fields = form_parser(final_response)
                 
@@ -404,6 +406,29 @@ def create_searchable_pdf(access_token, file_name, file_path, filetype):
         return ocr_response
     else:
         return None
+
+def css_download(access_token, file_path, files):
+    url = f"{Config.CSS_URL}/v2/content"
+    headers = {
+        'Authorization': f"Bearer {access_token}"
+    }
+
+    with open(file_path, 'rb') as file:
+        response = requests.post(url, headers=headers, data=file)
+    
+    file_id = response.json()['entries'][0]['id']
+    object_id = response.json()['entries'][0]['objectId']
+    url_new = f"{Config.CSS_URL}/v2/content/{file_id}/download?object-id={object_id}&avs-scan=false"
+
+    response_new = requests.get(url_new, headers=headers)
+
+    if response_new.status_code == 200:
+        with open(f'{files}/{uuid.uuid4().hex[:8]}.pdf', 'wb') as file:
+            file.write(response_new.content)
+        return True
+    else:
+        print('Failed to download file. Status code:', response_new.status_code)
+        return False
 
 def check_mail(data):
     if Users.query.filter_by(email=data).first():

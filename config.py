@@ -16,6 +16,7 @@ class Config(object):
     PASSWORD = os.environ.get('PASSWORD')
     password = urllib.parse.quote_plus(os.environ.get('password'))
     CONNECTION_STRING = os.environ.get('CONNECTION_STRING')
+    CSS_URL = "https://css.na-1-dev.api.opentext.com"
 
 
 class SendMail(object):
